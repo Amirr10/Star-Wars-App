@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import './App.css'
+import data from "./people.json";
+import Layout from './components/Layout/Layout';
+import { Box } from "@mui/material";
 
-function App() {
-
+const App = () => {
   return (
-    <div>
-      App
-    </div>
-  )
+		<Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+			<Layout />
+		</Box>
+	);
 }
 
 export default App
