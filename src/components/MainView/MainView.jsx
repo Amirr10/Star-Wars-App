@@ -1,12 +1,12 @@
 import React from 'react'
-import CatalogueView from '../../pages/CatalogueView/CatalogueView'
 import { Grid } from '@mui/material';
+import { Outlet } from 'react-router-dom';
 
 const MainView = () => {
   return (
     <Grid container item xs={8}>
-      <Grid item>
-        Main View
+      <Grid container pt={5}>
+        <Outlet />
       </Grid>
     </Grid>
   )

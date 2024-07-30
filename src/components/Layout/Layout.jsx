@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../Navbar/Navbar'
 import { Box } from '@mui/material'
-import MainView from '../MainView/MainView'
+import AppRoutes from '../AppRoutes/AppRoutes'
 
 const Layout = () => {
   return (
@@ -14,7 +14,7 @@ const Layout = () => {
           flex: 1
         }}
       >
-        <MainView />
+        <AppRoutes />
       </Box>
     </Box>
   )
