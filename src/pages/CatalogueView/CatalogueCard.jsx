@@ -1,56 +1,50 @@
 import React from 'react';
-import { Avatar, Card, CardContent, CardHeader, Typography } from '@mui/material';
+import { Avatar, Card, CardHeader, Grid, Typography } from '@mui/material';
+import { styles } from './styles';
 
 const CatalogueCard = ({ key, name, gender, birth_year, height }) => {
   return (
-		<Card key={key} sx={{ maxWidth: 300 }}>
+		<Card key={key}>
 			<CardHeader
 				avatar={
-					<Avatar sx={{ bgcolor: "blue" }} aria-label="recipe">
-						{name[0]?.toUpperCase()}
+					<Avatar sx={styles.catalogueCard.avatar}>
+						{name?.[0]?.toUpperCase()}
 					</Avatar>
 				}
 				title={name}
 			/>
-			<CardContent sx={{ pb: 0, pt: 0 }}>
-				<Typography
-					variant="subtitle1"
-					color="#6c757d"
-					component="div"
-					align="center"
-				>
-					Height
-				</Typography>
-				<Typography variant="h6" align="center">
-					{height}
-				</Typography>
-			</CardContent>
-			<CardContent sx={{ pb: 0 }}>
-				<Typography
-					variant="subtitle1"
-					color="#6c757d"
-					component="div"
-					align="center"
-				>
-					Age
-				</Typography>
-				<Typography variant="h6" align="center">
-					{birth_year}
-				</Typography>
-			</CardContent>
-			<CardContent>
-				<Typography
-					variant="subtitle1"
-					color="#6c757d"
-					component="div"
-					align="center"
-				>
-					Gender
-				</Typography>
-				<Typography variant="h6" align="center">
-					{gender}
-				</Typography>
-			</CardContent>
+			<Grid container rowGap={2}>
+				<Grid container justifyContent={"space-between"} alignItems={"center"}>
+					<Grid item>
+						<Typography sx={styles.catalogueCard.leftSide}>Height:</Typography>
+					</Grid>
+					<Grid item>
+						<Typography sx={styles.catalogueCard.rightSide}>
+							{height}
+						</Typography>
+					</Grid>
+				</Grid>
+				<Grid container justifyContent={"space-between"} alignItems={"center"}>
+					<Grid item>
+						<Typography sx={styles.catalogueCard.leftSide}>Age:</Typography>
+					</Grid>
+					<Grid item>
+						<Typography sx={styles.catalogueCard.rightSide}>
+							{birth_year}
+						</Typography>
+					</Grid>
+				</Grid>
+				<Grid container justifyContent={"space-between"} alignItems={"center"}>
+					<Grid item>
+						<Typography sx={styles.catalogueCard.leftSide}>Gender:</Typography>
+					</Grid>
+					<Grid item>
+						<Typography sx={styles.catalogueCard.rightSide}>
+							{gender}
+						</Typography>
+					</Grid>
+				</Grid>
+			</Grid>
 		</Card>
 	);
 }
