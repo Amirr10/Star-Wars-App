@@ -58,7 +58,7 @@ const useInfiniteScroll = (url) => {
     getData();
   }, []);
 
-  return { listItems, isLoading, hasMore, fetchData };
+  return { listItems, isLoading, setListItems };
 };
 
 export default useInfiniteScroll;
