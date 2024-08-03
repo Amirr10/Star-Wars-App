@@ -3,6 +3,8 @@ export const styles = {
     backgroundColor: "#496cae"
   },
   linkButton: {
+    display: "flex",
+    lineHeight: "16px",
     my: 2,
     color: "white",
     textTransform: "none" 
