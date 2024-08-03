@@ -3,8 +3,9 @@ import { Grid, Card, CardContent, TextField, Typography, FormControl, InputLabel
 import { useOutletContext } from 'react-router-dom';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
-const genderOptions = ['Male', 'Female', 'Other'];
-const MAX_CHARS = 35;
+const NO_FILTER_COUNT = 0;
+const MAX_CHAR_LENGTH = 25;
+const genderOptions = ['Male', 'Female', 'N/A'];
 
 const FiltersView = () => {
   const { updateFilters , listItems, setFilteredList } = useOutletContext();
@@ -15,6 +16,7 @@ const FiltersView = () => {
 		age: "",
 		gender: "",
 	});
+	const isMaxLength = formData?.name?.length === MAX_CHAR_LENGTH;
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
@@ -32,7 +34,7 @@ const FiltersView = () => {
       );
     })
 		
-    setCount(!hasEmptyFilters ? updatedListItems?.length : 0);
+    setCount(!hasEmptyFilters ? updatedListItems?.length : NO_FILTER_COUNT);
     setFilteredList(updatedListItems);
   }, [listItems]);
 
@@ -65,6 +67,9 @@ const FiltersView = () => {
 									variant="outlined"
 									value={formData?.name}
 									onChange={handleInputChange}
+									inputProps={{ maxLength: MAX_CHAR_LENGTH }}
+									helperText={isMaxLength ? `Limit of ${MAX_CHAR_LENGTH} characters` : ""}
+									error={isMaxLength}
 									fullWidth
 								/>
 							</Grid>
@@ -77,6 +82,7 @@ const FiltersView = () => {
 									variant="outlined"
 									value={formData?.age}
 									onChange={handleInputChange}
+									inputProps={{ maxLength: MAX_CHAR_LENGTH }}
 									fullWidth
 								/>
 							</Grid>
