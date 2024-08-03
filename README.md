@@ -1,5 +1,6 @@
 
 Star Wars App
+
 Welcome to the Star Wars App! 
 This application lets you explore Star Wars figures with a catalogue view and a filter view.
 
@@ -16,7 +17,7 @@ Features:
 Getting Started:
 To get started with the app:
 
-1. Clone the repository from GitHub using the command: git clone https://github.com/your-username/your-repo-name.git.
+1. Clone the repository from GitHub using the command: git clone https://github.com/Amirr10/Star-Wars-App.git
 
 2. Navigate to the project directory with: cd your-repo-name.
 
