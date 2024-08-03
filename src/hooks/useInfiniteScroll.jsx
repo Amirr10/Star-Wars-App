@@ -7,6 +7,7 @@ const useInfiniteScroll = (url) => {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const fetchData = useCallback(async () => {
     if (isLoading || !hasMore) return;
@@ -18,7 +19,7 @@ const useInfiniteScroll = (url) => {
       setPage(prevPage => prevPage + 1);
       if (!response.data.next) setHasMore(false);
     } catch (error) {
-      console.log(error);
+      setError(error);
     }
     setIsLoading(false);
   }, [url, page, isLoading, hasMore]);
@@ -50,7 +51,7 @@ const useInfiniteScroll = (url) => {
         setListItems(response.data.results);
         setPage(page + 1);
       } catch (error) {
-        console.log(error);
+        setError(error);
       }
       setIsLoading(false);
     };
@@ -58,7 +59,7 @@ const useInfiniteScroll = (url) => {
     getData();
   }, []);
 
-  return { listItems, isLoading, setListItems };
+  return { listItems, isLoading, error, setListItems };
 };
 
 export default useInfiniteScroll;

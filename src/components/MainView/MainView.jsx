@@ -8,7 +8,7 @@ const url = 'https://swapi.dev/api/people/';
 const MainView = () => {
   const [filteredList, setFilteredList] = useState([]);
   const [filters, setFilters] = useState({});
-  const { listItems, setListItems } = useInfiniteScroll(url);
+  const { listItems, setListItems, isLoading, error } = useInfiniteScroll(url);
 
   const updateFilters  = useCallback((selectedFilters) => {
     setFilters(selectedFilters);
@@ -30,6 +30,8 @@ const MainView = () => {
 						listItems,
 						filteredList,
 						filters,
+            isLoading,
+            error,
 						updateFilters,
 						setFilteredList,
 						sortListByName,

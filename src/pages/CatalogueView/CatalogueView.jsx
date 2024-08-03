@@ -1,19 +1,23 @@
 import React, { useState } from 'react'
-import { Box, Grid, IconButton, ToggleButton, ToggleButtonGroup, Tooltip, Typography } from '@mui/material';
+import { Box, Grid, IconButton, ToggleButton, ToggleButtonGroup, Tooltip, Typography, CircularProgress  } from '@mui/material';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import GridViewIcon from '@mui/icons-material/GridView';
 import { useOutletContext } from 'react-router-dom';
 import CatalogueCard from './CatalogueCard';
 import SortIcon from '@mui/icons-material/Sort';
+import NoAvailableData from '../../utils/NoAvailableData';
+import { styles } from './styles';
 
 
 const CatalogueView = () => {
   const [view, setView] = useState('grid');
-  const { listItems, filteredList, sortListByName } = useOutletContext();
+  const { listItems, filteredList, sortListByName, isLoading, error  } = useOutletContext();
 
   const handleToggleView = () => {
     return;
   }
+
+	if(error) return <NoAvailableData />;
 
   return (
 		<Grid container pt={4}>
@@ -61,6 +65,11 @@ const CatalogueView = () => {
 								<CatalogueCard {...item} />
 							</Grid>
 						)
+					)}
+					{isLoading && (
+						<Box sx={styles.spinner}>
+							<CircularProgress />
+						</Box>
 					)}
 				</Grid>
 			</Box>

@@ -15,7 +15,19 @@ export const styles = {
       fontSize: "22px",
       fontWeight: "500",
       color: "#2F2F2F"
-    }
+    },
 	},
-
+  spinner: {
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    bgcolor: 'background.paper',
+    p: 2, 
+    borderRadius: '50%',
+    boxShadow: 3
+  }
 };
