@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
 
-const useInfiniteScroll = (url) => {
+const useInfiniteScroll = (url, querySelectorName) => {
   const [listItems, setListItems] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -26,7 +26,7 @@ const useInfiniteScroll = (url) => {
 
   useEffect(() => {
     const handleScroll = debounce(() => {
-      const container = document.querySelector('.scrollable-container');
+      const container = document.querySelector(querySelectorName);
       if (!container) return;
 
       const { scrollTop, clientHeight, scrollHeight } = container;
@@ -35,7 +35,7 @@ const useInfiniteScroll = (url) => {
       }
     }, 300);
 
-    const container = document.querySelector('.scrollable-container');
+    const container = document.querySelector(querySelectorName);
     container?.addEventListener("scroll", handleScroll);
 
     return () => {

@@ -35,7 +35,7 @@ const CatalogueView = () => {
 				</Grid>
 				<Grid container item alignItems="center" justifyContent="flex-end">
 					<Grid item>
-						<Tooltip title="Sort List" arrow placement="bottom-start">
+						<Tooltip title="Sort By Name" arrow placement="bottom-start">
 							<IconButton onClick={sortListByName}>
 								<SortIcon />
 							</IconButton>
@@ -59,7 +59,7 @@ const CatalogueView = () => {
 			</Grid>
 
 			<Box
-				className="scrollable-container"
+				className="container"
 				style={{
 					width: "100%",
 					height: `calc(100vh - 200px)`,
