@@ -4,13 +4,8 @@ export const styles = {
   },
   linkButton: {
     display: "flex",
-    lineHeight: "16px",
-    my: 2,
     color: "white",
+    lineHeight: "16px",
     textTransform: "none" 
   },
-  boxButtons: {
-    display: { xs: "none", md: "flex" },
-    flexGrow: 1
-  }
 };

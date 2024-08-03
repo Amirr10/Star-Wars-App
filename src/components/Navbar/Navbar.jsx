@@ -13,23 +13,28 @@ const Navbar = () => {
   return (
 		<AppBar position="sticky" sx={styles.navbar}>
 			<Toolbar>
-				<Grid container alignItems={"baseline"} pl={7}>
-					<Grid item>
+				<Grid container sx={{ width: "50%" }} flexWrap={"nowrap"} alignItems={"flex-end"} pl={7}>
+
+					<Grid container item>
 						<Button
 							component={Link}
 							to={"/"}
 							sx={styles.linkButton}
 						>
-							<Icon>
-								<StarsIcon />
-							</Icon>
-							<Typography variant="h6" sx={{ flexGrow: 1 }}>
-								Star Wars App
-							</Typography>
+							<Grid item pr={1}>
+								<Icon >
+									<StarsIcon />
+								</Icon>
+							</Grid>
+							<Grid item>
+								<Typography variant="h6">
+									Star Wars App
+								</Typography>
+							</Grid>
 						</Button>
 					</Grid>
-					<Grid item>
-						<Box sx={styles.boxButtons}>
+
+					<Grid container item>
 							{pages.map((page, idx) => (
 								<Button
 									key={idx}
@@ -42,7 +47,6 @@ const Navbar = () => {
 									</Typography>
 								</Button>
 							))}
-						</Box>
 					</Grid>
 				</Grid>
 			</Toolbar>

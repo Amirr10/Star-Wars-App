@@ -6,7 +6,7 @@ const CatalogueCard = ({ displayList }) => {
 	return displayList?.map((item, idx) => {
 		const { name, gender, birth_year, height } = item;
 		return (
-			<Grid item xs={4}>
+			<Grid item xs={4} key={idx}>
 				<Card key={idx}>
 					<CardHeader
 						avatar={
