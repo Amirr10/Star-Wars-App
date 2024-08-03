@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
+import { useLocation } from 'react-router-dom';
 
 const useInfiniteScroll = (url, querySelectorName) => {
   const [listItems, setListItems] = useState([]);
@@ -8,6 +9,7 @@ const useInfiniteScroll = (url, querySelectorName) => {
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const location = useLocation();
 
   const fetchData = useCallback(async () => {
     if (isLoading || !hasMore) return;
@@ -41,7 +43,7 @@ const useInfiniteScroll = (url, querySelectorName) => {
     return () => {
       container?.removeEventListener("scroll", handleScroll);
     };
-  }, [fetchData]);
+  }, [fetchData, location.pathname]);
 
   useEffect(() => {
     const getData = async () => {
