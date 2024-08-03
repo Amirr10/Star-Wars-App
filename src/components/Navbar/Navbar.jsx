@@ -13,9 +13,9 @@ const Navbar = () => {
   return (
 		<AppBar position="sticky" sx={styles.navbar}>
 			<Toolbar>
-				<Grid container sx={{ width: "50%" }} flexWrap={"nowrap"} alignItems={"flex-end"} pl={7}>
+				<Grid container flexWrap={"nowrap"} alignItems={"flex-end"} pl={7}>
 
-					<Grid container item>
+					<Grid container item sx={{ maxWidth: "180px" }}>
 						<Button
 							component={Link}
 							to={"/"}
