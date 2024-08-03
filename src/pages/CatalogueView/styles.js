@@ -24,6 +24,13 @@ export const styles = {
       color: "#2F2F2F"
     },
 	},
+  catalogueList: {
+    listItem: {
+      padding: 2,
+      border: "1px solid #ddd",
+      borderRadius: "8px",
+    }
+  },
   spinner: {
     position: 'fixed',
     top: '50%',

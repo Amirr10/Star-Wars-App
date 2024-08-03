@@ -1,9 +1,11 @@
 import React from 'react'
 import { Avatar, Grid, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material'
-import { styles } from './styles';
+import { styles } from '../styles';
 
-const CatalogueList = ({ idx, name, gender, birth_year, height }) => {
-  return (
+const CatalogueList = ({ displayList }) => {
+  return displayList?.map((item, idx) => {
+		const { name, gender, birth_year, height } = item;
+		return (
 		<Grid container sx={{ pt: "10px", pl: "20px" }} key={idx}>
 			<Grid item xs={12}>
 				<List>
@@ -23,7 +25,8 @@ const CatalogueList = ({ idx, name, gender, birth_year, height }) => {
 				</List>
 			</Grid>
 		</Grid>
-	);
+	)}
+	)
 }
 
 export default CatalogueList

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Suspense } from 'react';
 import {
 	Box,
 	Grid,
@@ -9,20 +9,24 @@ import {
 	Typography,
 	CircularProgress,
 } from "@mui/material";
+import { useOutletContext } from 'react-router-dom';
+import { styles } from './styles';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import GridViewIcon from '@mui/icons-material/GridView';
-import { useOutletContext } from 'react-router-dom';
-import CatalogueCard from './CatalogueCard';
 import SortIcon from '@mui/icons-material/Sort';
 import NoAvailableData from '../../utils/NoAvailableData';
-import { styles } from './styles';
+import * as Component from "./index";
+
+const DEFAULT_VIEW = "CatalogueCard";
 
 const CatalogueView = () => {
-  const [view, setView] = useState('grid');
+  const [view, setView] = useState(DEFAULT_VIEW);
   const { listItems, filteredList, sortListByName, isLoading, error } = useOutletContext();
+	const displayList = filteredList?.length > 0 ? filteredList : listItems;
+	const ViewComponent = view ? Component[view] : Component[DEFAULT_VIEW] ;
 
-  const handleToggleView = () => {
-    return;
+  const handleToggleView = (event, viewType) => {
+    setView(viewType);
   }
 
 	if(error) return <NoAvailableData />;
@@ -47,10 +51,10 @@ const CatalogueView = () => {
 							exclusive
 							onChange={handleToggleView}
 						>
-							<ToggleButton value="left" aria-label="left aligned">
+							<ToggleButton value="CatalogueList" aria-label="left aligned">
 								<FormatListBulletedIcon />
 							</ToggleButton>
-							<ToggleButton value="center" aria-label="centered">
+							<ToggleButton value="CatalogueCard" aria-label="centered">
 								<GridViewIcon />
 							</ToggleButton>
 						</ToggleButtonGroup>
@@ -60,13 +64,12 @@ const CatalogueView = () => {
 
 			<Box sx={styles.container} className="container">
 				<Grid container item rowSpacing={2} columnSpacing={2}>
-					{(filteredList?.length > 0 ? filteredList : listItems)?.map(
-						(item, idx) => (
-							<Grid item xs={4} key={idx}>
-								<CatalogueCard {...item} />
-							</Grid>
-						)
-					)}
+					{displayList ? ( 
+							<Suspense fallback={<CircularProgress />}>
+								<ViewComponent displayList={displayList} />
+							</Suspense>
+					) : null
+					}
 					{isLoading && (
 						<Box sx={styles.spinner}>
 							<CircularProgress />
