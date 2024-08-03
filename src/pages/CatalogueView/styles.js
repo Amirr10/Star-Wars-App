@@ -1,4 +1,11 @@
 export const styles = {
+  container: {
+    width: "100%",
+    height: `calc(100vh - 200px)`,
+    overflow: "auto",
+    scrollbarWidth: "thin",
+    scrollbarColor: "#718096 #edf2f7",
+  },
 	catalogueCard: {
     avatar: {
       backgroundColor: "#164BA1",

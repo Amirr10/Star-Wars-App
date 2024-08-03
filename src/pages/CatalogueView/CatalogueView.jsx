@@ -58,14 +58,7 @@ const CatalogueView = () => {
 				</Grid>
 			</Grid>
 
-			<Box
-				className="container"
-				style={{
-					width: "100%",
-					height: `calc(100vh - 200px)`,
-					overflow: "auto",
-				}}
-			>
+			<Box sx={styles.container} className="container">
 				<Grid container item rowSpacing={2} columnSpacing={2}>
 					{(filteredList?.length > 0 ? filteredList : listItems)?.map(
 						(item, idx) => (
