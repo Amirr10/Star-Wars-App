@@ -1,0 +1,65 @@
+Documentation
+Plan and Design
+The initial step was to design and plan the basic structure of the app, including page layouts, data flow, libraries to use, and division of tasks.
+
+Libraries Used
+Axios: For making HTTP requests.
+MUI (Material-UI): To design and build a visually appealing UI with built-in components and numerous props, enabling faster and cleaner app development.
+Lodash: For utility functions like debounce.
+React Router DOM: For handling routing within the app.
+Basic Structure and Layout
+I planned all the necessary pages and then built the basic structure of the app,
+including components like Layout, Navbar, and MainView. Only after this was done did I begin working on separate tasks.
+
+Navbar and Routing
+Routing, while not mandatory for the home assignment,
+was included using React Router for simplicity. The MainView component contains the main logic,
+with its child components nested within it. I usually work with React Router 5, but I updated my knowledge to version 6 for this project.
+
+Data Fetching
+Data fetching is handled in the MainView component, which manages the logic and passes necessary states and props to its children.
+To enhance the user experience, infinite scrolling was implemented. Initially, I tried some libraries, but they were overly complex for this app.
+I created a custom hook (useInfiniteScroll) to fetch data whenever the user scrolls down to a certain point.
+This hook encapsulates the implementation for cleaner code and reusability.
+
+MainView
+The MainView component utilizes the useInfiniteScroll hook for data fetching and manages it through the Outlet context. It includes:
+
+updateFilters(filters): Updates the current filters selected by the user.
+filteredList: Holds the filtered list from the FilterView component.
+listItems: The original data list fetched from the API.
+
+CatalogueView
+This component manages the state and display of CatalogueCard and CatalogueList views dynamically with lazy loading,
+optimizing performance for larger apps. It receives both the original and filtered lists to display the appropriate data.
+Error handling is included, displaying a NoAvailableData component if no data is available.
+
+View Components
+CatalogueCard and CatalogueList are dumb components designed solely for display purposes.
+
+List/Cards Toggle Buttons
+Located in the CatalogueView component, these buttons allow users to switch between list and card views.
+
+Sort by Name Icon
+A simple icon with a tooltip for sorting items alphabetically.
+
+FilterView
+The FilterView component, which serves as the second page, handles the filtering logic for the list of items.
+It displays search results, contains form fields, and uses the useLocalStorage hook.
+
+Filters: Include validation and error messages.
+formData: Manages the search data from the text fields and select components.
+handleInputChange(): Updates the filters state.
+applyFilters(): Applies filters and updates the filteredList state and count.
+useEffect: Updates local storage with the filters, applying them on reload.
+useLocalStorage Hook
+Handles setting and getting local storage, used in the FilterView to persist user searches even after a page reload.
+
+Styles
+The styles.js convention was used for components requiring more styling properties,
+ensuring cleaner code and simplicity. For other components with built-in props, such as grids, their own props were used.
+
+*Responsiveness
+The apps responsiveness is currently in progress.
+While some components have been optimized for different screen sizes,
+This task will need a bit more time.
