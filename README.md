@@ -1,5 +1,7 @@
 
 Star Wars App
+![image](https://github.com/user-attachments/assets/df2cf353-0efe-4ddd-8056-7e969c46e94c)
+
 
 Welcome to the Star Wars App! 
 This application lets you explore Star Wars figures with a catalogue view and a filter view.
